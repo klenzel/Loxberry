@@ -55,10 +55,15 @@ our $netzwerkanschluss;
 our $netzwerkssid;
 our $netzwerkschluessel;
 our $netzwerkadressen;
+our $netzwerkdomain;
 our $netzwerkipadresse;
 our $netzwerkipmaske;
 our $netzwerkgateway;
 our $netzwerknameserver;
+our $netzwerkipadresse6;
+our $netzwerkipmaske6;
+our $netzwerkgateway6;
+our $netzwerknameserver6;
 our @lines;
 our $do;
 our $message;
@@ -77,10 +82,15 @@ $lang               = $cfg->param("BASE.LANG");
 $netzwerkanschluss  = $cfg->param("NETWORK.INTERFACE");
 $netzwerkssid       = $cfg->param("NETWORK.SSID");
 $netzwerkadressen   = $cfg->param("NETWORK.TYPE");
+$netzwerkdomain 	 = $cfg->param("NETWORK.DOMAIN");
 $netzwerkipadresse  = $cfg->param("NETWORK.IPADDRESS");
 $netzwerkipmaske    = $cfg->param("NETWORK.MASK");
 $netzwerkgateway    = $cfg->param("NETWORK.GATEWAY");
 $netzwerknameserver = $cfg->param("NETWORK.DNS");
+$netzwerkipadresse6  = $cfg->param("NETWORK6.IPADDRESS");
+$netzwerkipmaske6    = $cfg->param("NETWORK6.MASK");
+$netzwerkgateway6    = $cfg->param("NETWORK6.GATEWAY");
+$netzwerknameserver6 = $cfg->param("NETWORK6.DNS");
 
 #########################################################################
 # Parameter
@@ -162,10 +172,15 @@ sub form {
 quotemeta($netzwerkanschluss);
 quotemeta($netzwerkssid);
 quotemeta($netzwerkadressen);
+quotemeta($netzwerkdomain);
 quotemeta($netzwerkipadresse);
 quotemeta($netzwerkipmaske);
 quotemeta($netzwerkgateway);
 quotemeta($netzwerknameserver);
+quotemeta($netzwerkipadresse6);
+quotemeta($netzwerkipmaske6);
+quotemeta($netzwerkgateway6);
+quotemeta($netzwerknameserver6);
 
 # Defaults for template
 if ($netzwerkanschluss eq "eth0") {
@@ -209,29 +224,44 @@ $netzwerkanschluss  = param('netzwerkanschluss');
 $netzwerkssid       = param('netzwerkssid');
 $netzwerkschluessel = param('netzwerkschluessel');
 $netzwerkadressen   = param('netzwerkadressen');
+$netzwerkdomain		  = param('netzwerkdomain');
 $netzwerkipadresse  = param('netzwerkipadresse');
 $netzwerkipmaske    = param('netzwerkipmaske');
 $netzwerkgateway    = param('netzwerkgateway');
 $netzwerknameserver = param('netzwerknameserver');
+$netzwerkipadresse6  = param('netzwerkipadresse6');
+$netzwerkipmaske6    = param('netzwerkipmaske6');
+$netzwerkgateway6    = param('netzwerkgateway6');
+$netzwerknameserver6 = param('netzwerknameserver6');
 
 # Filter
 quotemeta($netzwerkanschluss);
 quotemeta($netzwerkssid);
 quotemeta($netzwerkschluessel);
 quotemeta($netzwerkadressen);
+quotemeta($netzwerkdomain);
 quotemeta($netzwerkipadresse);
 quotemeta($netzwerkipmaske);
 quotemeta($netzwerkgateway);
 quotemeta($netzwerknameserver);
+quotemeta($netzwerkipadresse6);
+quotemeta($netzwerkipmaske6);
+quotemeta($netzwerkgateway6);
+quotemeta($netzwerknameserver6);
 
 # Write configuration file(s)
 $cfg->param("NETWORK.INTERFACE", "$netzwerkanschluss");
 $cfg->param("NETWORK.SSID", "$netzwerkssid");
 $cfg->param("NETWORK.TYPE", "$netzwerkadressen");
+$cfg->param("NETWORK.DOMAIN", "$netzwerkdomain");
 $cfg->param("NETWORK.IPADDRESS", "$netzwerkipadresse");
 $cfg->param("NETWORK.MASK", "$netzwerkipmaske");
 $cfg->param("NETWORK.GATEWAY", "$netzwerkgateway");
 $cfg->param("NETWORK.DNS", "$netzwerknameserver");
+$cfg->param("NETWORK6.IPADDRESS", "$netzwerkipadresse6");
+$cfg->param("NETWORK6.MASK", "$netzwerkipmaske6");
+$cfg->param("NETWORK6.GATEWAY", "$netzwerkgateway6");
+$cfg->param("NETWORK6.DNS", "$netzwerknameserver6");
 $cfg->save();
 
 # Set network options
