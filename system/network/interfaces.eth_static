@@ -6,5 +6,11 @@ iface eth0 inet static
   address <!--$netzwerkipadresse-->
   netmask <!--$netzwerkipmaske-->
   gateway <!--$netzwerkgateway-->
-  dns-domain loxberry.local
+  dns-domain <!--$netzwerkdomain-->
   dns-nameservers <!--$netzwerknameserver-->
+  
+iface eth0 inet6 static
+  address <!--$netzwerkipadresse6-->
+  netmask <!--$netzwerkipmaske6-->
+  gateway <!--$netzwerkgateway6-->
+  dns-nameservers <!--$netzwerknameserver6-->
